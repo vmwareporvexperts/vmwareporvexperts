@@ -20,8 +20,8 @@ auth ={
 
 
 headers = { 'Accept': 'application/json',
-			'Content-Type': 'application/json',
-		    'vmware-use-header-authn' : 'vmwareporvexperts'}
+	   'Content-Type': 'application/json',
+	   'vmware-use-header-authn' : 'vmwareporvexperts'}
 
 authentication = HTTPBasicAuth(auth['username'],auth['password'])
 
