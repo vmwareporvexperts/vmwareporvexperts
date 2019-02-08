@@ -1,0 +1,95 @@
+---
+
+- hosts: ansible-control-node
+  connection: local
+  vars:
+    vcenter_hostname: 192.168.6.10
+    vcenter_username: miquel.mariano
+    vcenter_password: Secret123!
+    datacenter_name: VDC
+    cluster_name: 01-ansible-cluster
+    esxi_username: root
+    esxi_password: Secret123!
+  tasks:
+  - name: Create Cluster
+    local_action:
+      module: vmware_cluster
+      hostname:  '{{ vcenter_hostname }}'
+      username:  '{{ vcenter_username }}'
+      password:  '{{ vcenter_password }}'
+      validate_certs: false
+      datacenter_name:  '{{ datacenter_name }}'
+      cluster_name:  '{{ cluster_name }}'
+      enable_ha: yes
+      enable_drs: yes
+      enable_vsan: yes
+      state: present
+  - name: Add ESXi Host to vCenter
+    vmware_host:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      datacenter_name: '{{ datacenter_name }}'
+      cluster_name: '{{ cluster_name }}'
+      esxi_hostname: esxi0{{ item }}
+      esxi_username: '{{ esxi_username }}'
+      esxi_password: '{{ esxi_password }}'
+      state: present
+      validate_certs: false
+    with_sequence: start=1 end=5
+  - name: Enter host maintenance mode
+    vmware_maintenancemode:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      validate_certs: false
+      esxi_hostname: esxi0{{ item }}
+      state: present
+    with_sequence: start=1 end=5 
+    tags: maintenance
+ 
+  - name: Configure NTP
+    vmware_host_ntp:
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      validate_certs: false
+      cluster_name: '{{ cluster_name }}'
+      state: present
+      ntp_servers:
+        - 0.pool.ntp.org
+        - 1.pool.ntp.org
+    delegate_to: localhost
+    tags: ntp
+
+  - name: Configure ESXi hostname and DNS servers
+    vmware_dns_config:
+      hostname: esxi0{{ item }}.vmwareporvexperts.org
+      username: '{{ esxi_username }}'
+      password: '{{ esxi_password }}'
+      validate_certs: false
+      change_hostname_to: esxi0{{ item }}
+      domainname: vmwareporvexperts.org
+      dns_servers:
+          - 8.8.8.8
+          - 8.8.4.4
+    with_sequence: start=1 end=5
+    delegate_to: localhost
+    tags: dns
+
+  - name: Add PRODUCCION Network VM Portgroup  
+    vmware_portgroup:  
+      hostname: '{{ vcenter_hostname }}'
+      username: '{{ vcenter_username }}'
+      password: '{{ vcenter_password }}'
+      hosts: esxi0{{ item }}
+      validate_certs: false
+      switch_name: vSwitch0
+      portgroup_name: PRODUCCION
+      vlan_id: 0
+      state: present
+    with_sequence: start=1 end=5
+    delegate_to: localhost
+    tags: vm-portgroup
+
+

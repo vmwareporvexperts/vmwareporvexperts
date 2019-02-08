@@ -1,0 +1,12 @@
+[esxi:children]
+live
+test
+
+[live]
+esxi01.vmwareporvexperts.org
+esxi02.vmwareporvexperts.org
+esxi03.vmwareporvexperts.org
+
+[test]
+esxi04.vmwareporvexperts.org
+esxi05.vmwareporvexperts.org

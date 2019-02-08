@@ -1,0 +1,45 @@
+[grupo-test]
+test1 vm_ip=10.0.0.20
+test2 vm_ip=10.0.0.21
+
+[grupo-prueba]
+prueba1 vm_ip=20.0.0.20
+prueba2 vm_ip=20.0.0.21
+
+[grupo-prueba:vars]
+vc_datacenter=VDC
+vc_folder=/MIQUEL/VSAN/VMS/PRUEBA
+vc_cluster=Cluster-EVC
+vc_note='Created by Ansible'
+vm_datastore=HUS110_LUN0000
+vm_networkportgroup=VLAN6_Formacion
+vm_networkdns1=192.168.6.100
+vm_networkdns2=192.168.6.101
+vm_networkmask=255.255.255.0
+vm_networkgw=10.0.0.1
+vm_memory=1024
+vm_cpu=1
+vm_disksize=20
+
+[grupo-test:vars]
+vc_datacenter=VDC
+vc_folder=/MIQUEL/VSAN/VMS/TEST
+vc_cluster=Cluster-EVC
+vc_note='Created by Ansible'
+vm_datastore=HUS110_LUN0000
+vm_networkportgroup=VLAN6_Formacion
+vm_networkdns1=192.168.6.100
+vm_networkdns2=192.168.6.101
+vm_networkmask=255.255.255.0
+vm_networkgw=10.0.0.1
+vm_memory=1024
+vm_cpu=1
+vm_disksize=20
+
+[all:vars]
+vc_hostname=192.168.6.10
+vc_username=administrator@vsphere.local
+vc_password=Secret123!
+vm_template=miquel-template-W2012R2-Std-ES
+dc_domain=vmwareporvexperts.local
+localadminpass=Secret123!

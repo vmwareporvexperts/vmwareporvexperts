@@ -1,0 +1,39 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - name: Deploy VM windows from template and customize
+    vmware_guest:
+      hostname: "{{ vc_hostname }}" #Defined on vars/mail.yml
+      username: "{{ vc_username }}" #Defined on vars/mail.yml
+      password: "{{ vc_password }}" #Defined on vars/mail.yml
+      validate_certs: no
+      datacenter: "{{ vc_datacenter }}"
+      folder: "{{ vc_folder }}"
+      cluster: "{{ vc_cluster }}"
+      name: "{{ inventory_hostname }}"
+      annotation: "{{ vc_note }}"
+      state: poweredon
+      disk:
+      - size_gb: "{{ vm_disksize}}"
+        type: thin
+        datastore: "{{ vm_datastore }}"
+      hardware:
+         memory_mb: "{{ vm_memory }}"
+         num_cpus: "{{ vm_cpu }}"
+         scsi: paravirtual
+      template: "{{ vm_template }}" #Defined on vars/mail.yml
+      networks:
+      - name: "{{ vm_networkportgroup }}"
+        ip: "{{ vm_ip }}"
+        netmask: "{{ vm_networkmask }}"
+        gateway: "{{ vm_networkgw }}"
+      customization:
+        hostname: "{{ inventory_hostname }}"
+        autologon: true
+        dns_servers:
+        - "{{ vm_networkdns1 }}"
+        - "{{ vm_networkdns2 }}"
+        dns_suffix: "{{ dc_domain}}" #Defined on vars/mail.yml
+        password: "{{ localadminpass }}" #Defined on vars/mail.yml
+    delegate_to: localhost
