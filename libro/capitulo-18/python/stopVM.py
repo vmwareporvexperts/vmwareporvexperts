@@ -1,3 +1,8 @@
+/*
+Script creado por Daniel Romero Sánchez cómo ejemplo de apagado de una máquina virtual en 
+VMware utilizando la API REST de vSphere, para elibro VMware por vExperts.
+*/
+
 import requests
 import json
 from requests.auth import HTTPBasicAuth
