@@ -4,9 +4,9 @@
   tasks:
   - name: Deploy VM windows from template and customize
     vmware_guest:
-      hostname: "{{ vc_hostname }}" #Defined on vars/mail.yml
-      username: "{{ vc_username }}" #Defined on vars/mail.yml
-      password: "{{ vc_password }}" #Defined on vars/mail.yml
+      hostname: "{{ vc_hostname }}" 
+      username: "{{ vc_username }}" 
+      password: "{{ vc_password }}" 
       validate_certs: no
       datacenter: "{{ vc_datacenter }}"
       folder: "{{ vc_folder }}"
@@ -22,7 +22,7 @@
          memory_mb: "{{ vm_memory }}"
          num_cpus: "{{ vm_cpu }}"
          scsi: paravirtual
-      template: "{{ vm_template }}" #Defined on vars/mail.yml
+      template: "{{ vm_template }}" 
       networks:
       - name: "{{ vm_networkportgroup }}"
         ip: "{{ vm_ip }}"
@@ -34,6 +34,6 @@
         dns_servers:
         - "{{ vm_networkdns1 }}"
         - "{{ vm_networkdns2 }}"
-        dns_suffix: "{{ dc_domain}}" #Defined on vars/mail.yml
-        password: "{{ localadminpass }}" #Defined on vars/mail.yml
+        dns_suffix: "{{ dc_domain}}" 
+        password: "{{ localadminpass }}" 
     delegate_to: localhost
