@@ -1,5 +1,5 @@
 /*
-Script creado por Daniel Romero Sánchez cómo ejemplo de apagado de una máquina virtual en 
+Script creado por Daniel Romero Sánchez cómo ejemplo de encendido de una máquina virtual en 
 VMware utilizando la API REST de vSphere, para elibro VMware por vExperts.
 */
 var unirest = require('unirest')
@@ -42,7 +42,7 @@ async function stopVM(){
                   if (element.name == 'vm01'){
                     var vmid = element.vm
                     console.log(vmid)
-                    uri = settings.host + '/rest/vcenter/vm/'+vmid+'/power/stop'
+                    uri = settings.host + '/rest/vcenter/vm/'+vmid+'/power/start'
                     unirest.post(uri)
                            .strictSSL(settings.ssl)
                            .headers(header)
