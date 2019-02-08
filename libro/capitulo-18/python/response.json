@@ -1,0 +1,27 @@
+{ 
+
+  "value": [ 
+    { 
+      "memory_size_MiB": 10240, 
+      "vm": "vm-13", 
+      "name": "dbcvcsa01", 
+      "power_state": "POWERED_ON", 
+      "cpu_count": 2 
+
+    }, 
+    { 
+      "memory_size_MiB": 8192, 
+      "vm": "vm-63", 
+      "name": "dbcvic01", 
+      "power_state": "POWERED_ON", 
+      "cpu_count": 2 
+    }, 
+    { 
+      "memory_size_MiB": 1024, 
+      "vm": "vm-81", 
+      "name": "vm01", 
+      "power_state": "POWERED_OFF", 
+      "cpu_count": 1 
+    } 
+  ] 
+}
