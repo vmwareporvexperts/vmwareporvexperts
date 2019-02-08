@@ -14,11 +14,15 @@ var settings = {
 async function getToken(){
     var apiPath = '/rest/com/vmware/cis/session';
     var uri = settings.host + apiPath
+    var header = { 'Accept': 'application/json', 
+                  'Content-Type': 'application/json', 
+                  'vmware-use-header-authn' : 'vmwareporvexperts'
+    }
     return new Promise(function(resolve, reject) {
       unirest.post(uri)
           .strictSSL(settings.ssl)
           .auth(settings.username, settings.password)
-          .headers({'Accept': 'application/json', 'Content-Type': 'application/json', 'vmware-use-header-authn' : 'vmwareporvexperts'})
+          .headers(header)
           .end(function (response) {
             resolve(response.body);
           });
