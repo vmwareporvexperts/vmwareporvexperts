@@ -4,13 +4,11 @@ VMware utilizando la API REST de vSphere, para elibro VMware por vExperts.
 */
 
 import requests
-import json
 from requests.auth import HTTPBasicAuth
 
+url = 'https://vcenter.vmwareporvexperts.org'
 
 apiPath = '/rest/com/vmware/cis/session';
-
-url = 'https://vcenter.vmwareporvexperts.org'
 
 
 auth ={
@@ -23,7 +21,7 @@ headers = { 'Accept': 'application/json',
 	   'Content-Type': 'application/json',
 	   'vmware-use-header-authn' : 'vmwareporvexperts'}
 
-authentication = HTTPBasicAuth(auth['username'],auth['password'])
+authentication = HTTPBasicAuth(auth['username'], auth['password'])
 
 response = requests.post(url + apiPath, auth = authentication, verify = False, headers = headers)
 
@@ -34,12 +32,12 @@ print (token)
 
 
 headers = { 'Accept': 'application/json',
-			      'Content-Type': 'application/json',
-		        'vmware-api-session-id' : token
+	   'Content-Type': 'application/json',
+	   'vmware-api-session-id' : token
 }
 
 apiPath = '/rest/vcenter/vm'
-response = requests.get(url+ apiPath, verify=False, headers=headers)
+response = requests.get(url + apiPath, verify = False, headers = headers)
 data = response.json()
 
 for vm in data['value']:
@@ -48,8 +46,8 @@ for vm in data['value']:
 		break
 
 
-apiPath = '/rest/vcenter/vm/'+vmid+'/power/stop'
+apiPath = '/rest/vcenter/vm/' + vmid + '/power/stop'
 
-response = requests.post(url+ apiPath, verify=False, headers=headers)
+response = requests.post(url + apiPath, verify = False, headers = headers)
 
 print (response.status_code)
