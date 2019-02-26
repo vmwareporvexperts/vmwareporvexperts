@@ -29,7 +29,7 @@ function getToken(){
       });
 }
 
-async function stopVM(){
+async function startVM(){
     var token = await getToken()
     console.log(token.value)
     var uri = settings.host + '/rest/vcenter/vm'
@@ -60,4 +60,4 @@ async function stopVM(){
      });
 }
 
-stopVM()
+startVM()
