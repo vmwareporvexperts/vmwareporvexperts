@@ -11,7 +11,7 @@ var settings = {
     ssl: false
 }
 
-async function getToken(){
+function getToken(){
     var apiPath = '/rest/com/vmware/cis/session';
     var uri = settings.host + apiPath
     var header = { 'Accept': 'application/json', 
