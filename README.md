@@ -47,3 +47,28 @@ Analizamos entre los 14 varias causas solidarias y decidimos quedamos con 2.
 Una es CEAFA, una confederación no gubernamental de ayuda a personas y familiares con Alzheimer.
 Y la segunda es el proyecto Banani que su principal objetivo es ayudar a construir la casa de maternidad / hospital Banani en el País Dogon, en Mali.
 
+#### Listado de patrocinadores.
+![VMware](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-gold-vmware-libro-2.jpg)
+
+![Qloudea](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-qloudea-ebook-vmware-1.jpg)
+
+![Veeam](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-veeam-ebook-vmware.png)
+
+![Vembu](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-vembu-ebook-vmware-2.jpg)
+
+![QNAP](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-qnap-ebook-vmware.jpg)
+
+![Sothis](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-SOTHIS-ebook-vmware.jpg)
+
+![OVH](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/logo-ovh-png-2-300x63.png)
+
+![Adistec](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/adistec-600x424.jpg)
+
+![Praim](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-Praim-ebook-vmware.jpg)
+
+![Centreon](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/centreon-vmwareporvexperts-sponsor-1.jpg)
+
+![Nakivo](https://www.vmwareporvexperts.org/wp-content/uploads/2019/03/sponsor-Nakivo-ebook-vmware-2.jpg)
+
+
+
